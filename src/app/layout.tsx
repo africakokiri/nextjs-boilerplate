@@ -1,4 +1,3 @@
-import NextThemesProvider from "@/libs/next-themes/next-themes-provider";
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
@@ -14,9 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className="h-screen w-screen antialiased">
-        <NextThemesProvider>{children}</NextThemesProvider>
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
