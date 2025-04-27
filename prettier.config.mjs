@@ -11,7 +11,7 @@ const prettierConfig = {
     "prettier-plugin-merge"
   ],
 
-  printWidth: 75,
+  printWidth: 105,
   tabWidth: 2,
   arrowParens: "always",
   singleAttributePerLine: true,
