@@ -1,18 +1,40 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --border: oklch(0.922 0 0);
+  --background: oklch(0.985 0 0);
+  --element: oklch(1 0 0);
+  --foreground: oklch(0.205 0 0);
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --border: oklch(0.371 0 0);
+  --background: oklch(0.205 0 0);
+  --element: oklch(0.269 0 0);
+  --foreground: oklch(0.922 0 0);
 }
 
 @theme inline {
+  --color-border: var(--border);
   --color-background: var(--background);
+  --color-element: var(--element);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto px-4 py-8;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
