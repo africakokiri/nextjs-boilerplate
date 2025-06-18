@@ -5,9 +5,9 @@ import { cn } from "../utils/tailwind/cn";
 
 import { XIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { type HTMLAttributes, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-interface ModalProps extends HTMLAttributes<HTMLDivElement> {
+interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   trigger: React.ReactNode;

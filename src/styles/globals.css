@@ -7,6 +7,7 @@
   --background: oklch(0.985 0 0);
   --element: oklch(1 0 0);
   --foreground: oklch(0.205 0 0);
+  --radius: 0.375rem;
 }
 
 .dark {
@@ -21,6 +22,7 @@
   --color-background: var(--background);
   --color-element: var(--element);
   --color-foreground: var(--foreground);
+  --radius-radius: var(--radius);
 }
 
 @layer utilities {

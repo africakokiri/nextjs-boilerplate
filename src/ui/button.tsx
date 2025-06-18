@@ -3,7 +3,7 @@ import { cn } from "../utils/tailwind/cn";
 import { type VariantProps, cva } from "class-variance-authority";
 
 const buttonVariants = cva(
-  "cursor-pointer rounded-md transition hover:ring-2 hover:ring-offset-2 hover:ring-offset-background font-semibold",
+  "cursor-pointer rounded-radius transition hover:ring-2 hover:ring-offset-2 hover:ring-offset-background font-semibold",
   {
     variants: {
       variant: {
@@ -37,7 +37,7 @@ const buttonVariants = cva(
 export type ButtonVariant = VariantProps<typeof buttonVariants>["variant"];
 
 interface ButtonProps
-  extends React.HTMLAttributes<HTMLButtonElement>,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   children: React.ReactNode;
   className?: string;

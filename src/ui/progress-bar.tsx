@@ -1,8 +1,6 @@
 import { cn } from "../utils/tailwind/cn";
 
-import { type HTMLAttributes } from "react";
-
-interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
+interface ProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
   value: number;
   className?: string;
   ref?: React.Ref<HTMLDivElement>;
