@@ -1,9 +1,8 @@
+import { inter } from "@/styles/fonts";
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: "",
@@ -16,8 +15,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+    <html
+      lang="en"
+      suppressHydrationWarning
+    >
+      <body className={`${inter.className} antialiased`}>
+        <ThemeProvider
+          enableColorScheme={false}
+          attribute="class"
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
