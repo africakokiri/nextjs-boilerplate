@@ -9,7 +9,6 @@ const buttonVariants = cva(
       variant: {
         black: "bg-foreground text-element hover:ring-foreground",
         light: "bg-neutral-200 hover:ring-neutral-200 text-black",
-        primary: "bg-primary text-element hover:ring-primary",
         border: "bg-element hover:ring-border border",
         red: "bg-red-500 hover:ring-red-500 text-neutral-200",
         green: "bg-green-500 hover:ring-green-500 text-black",

@@ -12,22 +12,13 @@ interface SelectProps {
     value: string;
   }[];
   className?: string;
-  isPrimary?: boolean;
   width?: string;
   placeholder: string;
   value: string;
   onChange: (value: string) => void;
 }
 
-export const Select = ({
-  items,
-  className,
-  isPrimary,
-  width,
-  placeholder,
-  value,
-  onChange
-}: SelectProps) => {
+export const Select = ({ items, className, width, placeholder, value, onChange }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
 
@@ -47,18 +38,14 @@ export const Select = ({
   return (
     <div
       ref={elementRef}
-      className={cn(
-        `rounded-radius focus-within:ring-offset-element focus-within:ring-foreground relative transition
-focus-within:ring-2 focus-within:ring-offset-2`,
-        isPrimary && "focus-within:ring-primary"
-      )}
+      className="rounded-radius focus-within:ring-offset-element focus-within:ring-foreground relative
+transition focus-within:ring-2 focus-within:ring-offset-2"
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
           `bg-element rounded-radius hover:border-foreground relative flex w-[150px] items-center
 justify-between border px-2 py-1 text-left transition`,
-          isPrimary && "hover:border-primary",
           className
         )}
         style={{ width }}

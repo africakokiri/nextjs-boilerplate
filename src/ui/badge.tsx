@@ -7,7 +7,6 @@ const buttonVariants = cva("rounded-radius transition font-semibold", {
     variant: {
       black: "bg-foreground text-element",
       light: "bg-neutral-200 text-black",
-      primary: "bg-primary text-white",
       border: "bg-element  border",
       red: "bg-red-500  text-neutral-200",
       green: "bg-green-500  text-black",

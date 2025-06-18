@@ -11,7 +11,7 @@ export const ProgressBar = ({ value, className, ref }: ProgressBarProps) => {
     <div className="bg-element rounded-radius w-full overflow-hidden border">
       <div
         ref={ref}
-        className={cn("bg-primary h-4 transition-all duration-300 ease-in-out", className)}
+        className={cn("h-4 transition-all duration-300 ease-in-out", className)}
         style={{ width: `${value}%` }}
       />
     </div>
