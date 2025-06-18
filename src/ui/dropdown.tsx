@@ -1,60 +1,51 @@
 "use client";
 
-import { Button, type ButtonVariant } from "../ui/button";
 import { cn } from "../utils/tailwind/cn";
 
 import { motion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface DropdownProps {
-  children: React.ReactNode;
-  buttonClassName?: string;
+  trigger: React.ReactNode;
   containerClassName?: string;
   items: {
     name: string;
     value: string;
   }[];
-  buttonVariant?: ButtonVariant;
   onChange: (value: string) => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
 export const Dropdown = ({
-  children,
-  buttonClassName,
+  trigger,
   containerClassName,
   items,
-  buttonVariant,
-  onChange
+  onChange,
+  open,
+  onOpenChange
 }: DropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (elementRef.current && !elementRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
+        onOpenChange(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [onOpenChange]);
 
   return (
     <div
       ref={elementRef}
       className="relative"
     >
-      <Button
-        size="icon"
-        variant={buttonVariant}
-        onClick={() => setIsOpen(!isOpen)}
-        className={buttonClassName}
-      >
-        {children}
-      </Button>
+      <div onClick={() => onOpenChange(!open)}>{trigger}</div>
 
-      {isOpen && (
+      {open && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,21 +55,19 @@ export const Dropdown = ({
             containerClassName
           )}
         >
-          {items.map(({ name, value }) => {
-            return (
-              <div
-                key={`${name}-${value}`}
-                onClick={() => {
-                  onChange(value);
-                  setIsOpen(false);
-                }}
-                className="bg-element cursor-pointer rounded-md p-2 py-1.5 hover:bg-neutral-100
+          {items.map(({ name, value }) => (
+            <div
+              key={`${name}-${value}`}
+              onClick={() => {
+                onChange(value);
+                onOpenChange(false);
+              }}
+              className="bg-element cursor-pointer rounded-md p-2 py-1.5 hover:bg-neutral-100
 dark:hover:bg-neutral-700"
-              >
-                {name}
-              </div>
-            );
-          })}
+            >
+              {name}
+            </div>
+          ))}
         </motion.div>
       )}
     </div>
